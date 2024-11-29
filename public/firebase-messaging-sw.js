@@ -7,14 +7,13 @@ importScripts(
 );
 
 firebase.initializeApp({
-    apiKey: "AIzaSyAP9JoFVNGiV46omlrk66kmAQ_q2dWB8rY",
-    authDomain: "kma-notification.firebaseapp.com",
-    projectId: "kma-notification",
-    storageBucket: "kma-notification.firebasestorage.app",
-    messagingSenderId: "1029084965689",
-    appId: "1:1029084965689:web:6869afd67946620aa6d6e8",
-    measurementId: "G-9JF5LMHJMP",
-});
+  apiKey: "AIzaSyBQI1b67IGIJIO1EUr_RcXMIpshb2GaTeU",
+  authDomain: "movie-app-6b4a4.firebaseapp.com",
+  projectId: "movie-app-6b4a4",
+  storageBucket: "movie-app-6b4a4.firebasestorage.app",
+  messagingSenderId: "404673604362",
+  appId: "1:404673604362:web:d66d90cea193b79fd268f3",
+};);
 
 const messaging = firebase.messaging();
 messaging.onBackgroundMessage((payload) => {

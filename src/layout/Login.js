@@ -1,7 +1,24 @@
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { Button, Form, Input, Modal } from "antd";
+import apiService from "../api/APIService";
+import { generateToken } from "../firebase/firebase";
 
 function Login() {
     const [form] = Form.useForm();
+
+    const queryToken = useQuery({
+        queryKey: ["GET", "token"],
+        queryFn: async () => generateToken(),
+    });
+
+    if (queryToken.data) {
+        console.log(queryToken.data);
+    }
+
+    const mutationLogin = useMutation({
+        mutationKey: ["POST", "login"],
+        mutationFn: async (value) => apiService("POST", "/login", "", value),
+    });
 
     return (
         <Modal
@@ -11,16 +28,27 @@ function Login() {
             // cancelButtonProps={null}
             // okButtonProps={<Button type="primary">Login</Button>}
             footer={
-                <Button type="primary" block>
+                <Button type="primary" block onClick={() => form.submit()}>
                     Login
                 </Button>
             }
             closeIcon={null}
-            onOk={() => form.submit()}
         >
-            <Form form={form} layout="vertical">
+            <Form
+                form={form}
+                layout="vertical"
+                onFinish={(value) => {
+                    console.log(value);
+                    if (queryToken.data) {
+                        mutationLogin.mutate({
+                            ...value,
+                            fcmtoken: queryToken.data,
+                        });
+                    }
+                }}
+            >
                 <Form.Item
-                    name="user_name"
+                    name="username"
                     label="User name"
                     rules={[
                         {

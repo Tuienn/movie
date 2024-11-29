@@ -1,14 +1,13 @@
 import { initializeApp } from "firebase/app";
 import { getMessaging, getToken } from "firebase/messaging";
 
-export const firebaseConfig = {
-    apiKey: import.meta.env["VITE_FIREBASE_API_KEY"],
-    authDomain: "kma-notification.firebaseapp.com",
-    projectId: "kma-notification",
-    storageBucket: "kma-notification.firebasestorage.app",
-    messagingSenderId: "1029084965689",
-    appId: "1:1029084965689:web:6869afd67946620aa6d6e8",
-    measurementId: "G-9JF5LMHJMP",
+const firebaseConfig = {
+    apiKey: "AIzaSyBQI1b67IGIJIO1EUr_RcXMIpshb2GaTeU",
+    authDomain: "movie-app-6b4a4.firebaseapp.com",
+    projectId: "movie-app-6b4a4",
+    storageBucket: "movie-app-6b4a4.firebasestorage.app",
+    messagingSenderId: "404673604362",
+    appId: "1:404673604362:web:d66d90cea193b79fd268f3",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -19,7 +18,7 @@ export const generateToken = async () => {
     if (permission === "granted") {
         const token = await getToken(messaging, {
             vapidKey:
-                "BNIcCB21ksn8fOU3iXvLc1elxBejht9Hligy2ybm_g19GVPY3dJh5VuEDzVX9baPi35OXa1D-mC0-Y_wOAEx6S4",
+                "BIAAzWD5-hpA7efc80h5NWzCYrrOP0OYu7MPjevI5Aymh5hmDRoDFquWm6QPr7uV6djjYDxOY3jUvDb84zMaJAw",
         });
         return token;
     }
